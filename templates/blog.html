@@ -1,0 +1,266 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/card.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pattern.css' %}" />
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script> -->
+    <!--[if IE]>
+	  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+    <script>
+        if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+            var root = document.getElementsByTagName('html')[0];
+            root.setAttribute('class', 'ff');
+        };
+    </script>
+    <title>Tech-BM | Blogs</title>
+
+    <style>
+        .bg-dark {
+            background: #333;
+            color: #fff;
+        }
+
+        .text-secondary {
+            color: #0284d0;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            opacity: 0.8;
+            width: 100%;
+            height: 60px;
+            position: fixed;
+            top: 0px;
+            padding: 0 30px;
+            transition: 0.5s;
+            z-index: 111;
+        }
+
+        /* .navbar.top {
+            background: transparent;
+        } */
+
+        .navbar a {
+            color: #fff;
+            padding: 8px 20px;
+            margin: 0 5px;
+        }
+
+        .navbar a:hover {
+            border-bottom: #0284d0 2px solid;
+        }
+
+        .navbar ul {
+            display: flex;
+        }
+
+        .navbar .logo {
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .hero {
+            height: 40px;
+        }
+
+        .text-primary {
+            color: #28a745;
+        }
+
+        .footer {
+            display: flex;
+            padding: 2rem 1rem;
+            align-items: center;
+            justify-content: space-evenly;
+            text-align: center;
+            height: 100%;
+        }
+
+        .footer a {
+            color: #fff;
+        }
+
+        .footer a:hover {
+            color: #4267B2;
+        }
+
+        .fa-twitter:hover {
+            color: #00acee;
+        }
+
+        .fa-youtube:hover {
+            color: #ff0000;
+        }
+
+        .fa-linkedin:hover {
+            color: #0077b5;
+        }
+
+
+        .footer .social>* {
+            margin-right: 30px;
+        }
+
+        .newsletter {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .newsletter h3 {
+            margin-bottom: 20px;
+        }
+
+        .news-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-form input {
+            padding: 4px;
+            margin-bottom: 10px;
+        }
+
+        .copyright {
+            flex-direction: row;
+        }
+
+        .foot {
+            margin-bottom: 15px;
+        }
+
+
+        @media(max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                height: 120px;
+                padding: 20px;
+            }
+
+            .footer>* {
+                margin-bottom: 30px;
+            }
+
+            .footer {
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+
+            .navbar a {
+                padding: 10px 10px;
+                margin: 3px;
+            }
+        }
+    </style>
+</head>
+
+
+<body class="demo-2">
+    <header class="hero blog">
+        <div id="navbar" class="navbar top">
+            <h1 class="logo">
+                <a href="{% url 'edge-home' %}"><span class="text-secondary"><i class="fas fa-code"></i>
+                        Tech</span>-BM</a>
+            </h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="codrops-header">
+            <h1>Latest Articles</h1>
+        </div>
+        <div class="content">
+            <!-- trianglify pattern container -->
+            <div class="pattern pattern--hidden"></div>
+            <!-- cards -->
+            <div class="wrapper">
+                {% for post in posts %}
+                <div class="card">
+                    <div class="card__container card__container--closed">
+                        <svg class="card__image" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 500"
+                            preserveAspectRatio="xMidYMid slice">
+                            <defs>
+                                <clipPath id="clipPath1">
+                                    <polygon class="clip" points="0,500 0,0 1920,0 1920,500"></polygon>
+                                </clipPath>
+                            </defs>
+                            <image clip-path="url(#clipPath1)" width="1920" height="500"
+                                xlink:href="{% static 'img/e.jpg' %}"></image>
+                        </svg>
+                        <div class="card__content">
+                            <i class="card__btn-close fas fa-times"></i>
+                            <div class="card__caption">
+                                <h2 class="card__title">{{ post.title }}</h2>
+                                <p class="card__subtitle">{{ post.subtitle }}</p>
+                            </div>
+                            <div class="card__copy">
+                                <div class="meta">
+                                    <img class="meta__avatar" src="{% static 'img/authors/3.png' %}" alt="author01" />
+                                    <span class="meta__author">{{ post.author }}</span>
+                                    <span class="meta__date">{{ post.date_posted|date:"F d, Y" }}</span>
+                                </div>
+                                <p>{{ post.content }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer bg-dark">
+        <div>
+            <h1 class="logo foot">
+                <span class="text-secondary"><i class="fas fa-code"></i> Tech</span>-BM
+            </h1>
+            <p>Ground Floor, BRS Nagar</p>
+            <p>Ludhiana, Punjab-141001</p>
+        </div>
+        <div class="newsletter">
+            <h3>Subscribe to our Newsletter</h3>
+            <form action="{% url 'edge-newsletter' %}" method="POST" class="news-form">
+                {% csrf_token %}
+                <input type="text" name="newsletter-name" placeholder="Your Name..." required>
+                <input type="email" name="newsletter-email" placeholder="Your Email..." required>
+                <input type="submit" value="Subscribe">
+            </form>
+        </div>
+        <div class="social">
+            <p>Connect With Us</p>
+            <a href=""><i class="fab fa-facebook fa-2x"></i></a>
+            <a href=""><i class="fab fa-twitter fa-2x"></i></a>
+            <a href=""><i class="fab fa-youtube fa-2x"></i></a>
+            <a href=""><i class="fab fa-linkedin fa-2x"></i></a>
+        </div>
+    </footer>
+    <div class="bg-dark" style="text-align: center; padding: 5px 5px 20px;">Copyright &copy; 2020, All rights reserved |
+        Tech-BM</div>
+
+    <!-- /container -->
+    <!-- JS -->
+    <script src="{% static 'js/vendors/trianglify.min.js' %}"></script>
+    <script src="{% static 'js/vendors/TweenMax.min.js' %}"></script>
+    <script src="{% static 'js/vendors/ScrollToPlugin.min.js' %}"></script>
+    <script src="{% static 'js/vendors/cash.min.js' %}"></script>
+    <script src="{% static 'js/Card-polygon.js' %}"></script>
+    <script src="{% static 'js/demo-2.js' %}"></script>
+</body>
+
+</html>

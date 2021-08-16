@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block link %}
+<title>Tech-BM | About</title>
+{% endblock link %}
+
+{% block content %}
+
+<header class="hero blog">
+    <div id="navbar" class="navbar top">
+        <h1 class="logo">
+            <a href="{% url 'edge-home' %}"><span class="text-secondary"><i class="fas fa-code"></i> Tech</span>-BM</a>
+        </h1>
+    </div>
+
+    <div class="content">
+        {% include 'messages-subs.html' %}
+
+        <h1 class="text-primary">About Us</h1>
+        <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+            into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+            release of
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
+        <!-- <a href="#about" class="btn"><i class="fas fa-chevron-right"></i> Read More</a> -->
+    </div>
+</header>
+{% endblock content %}

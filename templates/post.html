@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block link %}
+<title>Post One</title>
+{% endblock link %}
+
+</head>
+
+{% block content %}
+
+<body id="home">
+    <header class="hero blog">
+        <div id="navbar" class="navbar">
+            <h1 class="logo">
+                <a href="{% url 'edge-home' %}"><span class="text-primary"><i class="fas fa-book-open"></i>
+                        Edge</span>Ledger</a>
+            </h1>
+        </div>
+
+        <div class="content">
+            <h1>Leamos algo nuevo</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="post">
+            <a href="{% url 'edge-blog' %}" class="btn-secondary bg-primary btn">Back to Posts</a>
+            <h2>{{ posts.title }}</h2>
+            <p class="meta">
+                <i class="fas fa-user"></i> Posted by <strong>{{ posts.author }}</strong> |
+                {{posts.date_posted|date:"F d, Y"}}
+            </p>
+            <img src="{% static 'images/blog/blog1.jpg' %}" alt="">
+            <p>{{ posts.content }}</p>
+        </section>
+    </main>
+</body>
+{% endblock content %}
+
+</html>
